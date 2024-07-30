@@ -1,5 +1,11 @@
 <div>
-  <input type="checkbox" [checked] = "todo.completed" (change)="onToggleCompletion()">
+  <input type="checkbox" [checked] = "todo.completed" (change)="onToggleCompletion(toggleBtn)">
   <span [class.completed] = "todo.completed">{{ todo.title }}</span>
-  <button (click) = "onRemove()">Remove</button>
+  <button (click) = "onRemove()" [ngClass]="{'btn-danger' : true}">Remove</button>
+
+  <span class="priority" [ngClass]="todo.priority">({{ todo.priority | priority }})</span>
+
+  <button (click)="onToggleCompletion(toggleBtn)" [ngClass]="{'btn-success': !todo.completed, 'btn-warning' : todo.completed}" #toggleBtn>
+    {{ todo.completed ? 'Invalider' : 'Valider' }}
+  </button>
 </div>

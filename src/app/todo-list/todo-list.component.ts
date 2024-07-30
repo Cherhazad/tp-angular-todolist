@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Observable} from "rxjs";
 import {Todo, TodoService} from "../todo.service";
 import {TodoItemComponent} from "../todo-item/todo-item.component";
@@ -26,5 +26,4 @@ export class TodoListComponent {
   onRemoveTodo(id: number) {
     this.todoService.removeTodo(id);
   }
-
 }

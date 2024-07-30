@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 
 export interface Todo {
   id: number;
   title: string;
   completed: boolean;
+  priority: 'low' | 'medium' | 'high';
 }
 
 @Injectable({
@@ -15,17 +16,19 @@ export class TodoService {
   private todos: Todo[] = [];
   private todosSubject = new BehaviorSubject<Todo[]>(this.todos);
 
-  constructor() { }
+  constructor() {
+  }
 
   getTodos() {
     return this.todosSubject.asObservable();
   }
 
-  addTodo(title: string) {
+  addTodo(title: string, priority: 'low' | 'medium' | 'high') {
     const newTodo = {
       id: this.todos.length + 1,
       title,
-      completed: false
+      completed: false,
+      priority
     };
     this.todos = [...this.todos, newTodo];
     this.todosSubject.next(this.todos);

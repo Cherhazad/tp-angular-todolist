@@ -1,6 +1,10 @@
 <digi-todo-add></digi-todo-add>
+
+<h3>Liste des tâches</h3>
 <ul>
   <li *ngFor = "let todo of todos$ | async">
     <digi-todo-item [todo] = "todo" (toggleCompletion)="onToggleTodoCompletion($event)" (remove)="onRemoveTodo($event)"></digi-todo-item>
   </li>
 </ul>
+
+
